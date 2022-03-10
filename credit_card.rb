@@ -21,8 +21,8 @@ class CreditCard
   end
 
   # returns json string
-  def to_json
-    {
+  def to_json(*args)
+    my_hash = {
       'credit card' => {
         'number' => @number,
         'expiration_date' => @expiration_date,
@@ -30,7 +30,8 @@ class CreditCard
         'credit_network' => @credit_network
       }
       # TODO: setup the hash with all instance vairables to serialize into json
-    }.to_json
+    }
+    JSON.generate(my_hash, *args)
   end
 
   # returns all card information as single string
